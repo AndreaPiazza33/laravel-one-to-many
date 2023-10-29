@@ -15,6 +15,10 @@
         <h3>Description</h3><br>
         {{ $project->description }}
         </p>
+        <p>
+        <h3>Type</h3><br>
+        {!! $project->getTypeBadge() !!}
+        </p>
         <hr>
         <p>
         <h3>Slug</h3><br>
