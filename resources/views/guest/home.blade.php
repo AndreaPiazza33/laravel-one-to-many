@@ -5,10 +5,11 @@
         <h1>{{ $title }}</h1>
         <div class="row g-3">
             @forelse ($projects as $project)
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card h-100">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between">
                             {{ $project->title }}
+                            {!! $project->getTypeBadge() !!}
                         </div>
                         <div class="card-body">
                             {{ $project->description }}

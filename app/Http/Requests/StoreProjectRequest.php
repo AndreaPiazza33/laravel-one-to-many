@@ -31,7 +31,8 @@ class StoreProjectRequest extends FormRequest
                  Rule::unique('projects')
                 ],
             'description'=> ['required', 'string'],
-            'link'=> ['required', 'url']
+            'link'=> ['required', 'url'],
+            'type_id' => ['nullable','exists:types,id'] 
         ];
     }
 
@@ -46,6 +47,8 @@ class StoreProjectRequest extends FormRequest
 
             'link.required'=> 'Il link è obbligatorio',
             'link.string'=> 'Il link deve essere un URL',
+
+            'type_id.exists' => 'La tipologia inserita non è valida',
         ];
     }
 }

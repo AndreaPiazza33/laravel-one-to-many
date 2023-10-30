@@ -31,6 +31,23 @@
             </div>
 
             <div class="col-12 mt-3">
+                <label for="type_id" class="form-label ">Tipologia</label>
+                <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror">
+                    <option value="">Nessuna Tipologia</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" @if (old('type_id') ?? $project->type_id == $type->id) selected @endif>
+                            {{ $type->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('type_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="col-12 mt-3">
                 <label for="description" class="form-label">Contenuto</label>
                 <textarea name="description" id="description" class="form-control" rows="5"></textarea>
             </div>

@@ -30,6 +30,7 @@ class UpdateProjectRequest extends FormRequest
                  'string',
                  Rule::unique('projects')->ignore($this->project->id)],
             'description'=> ['required', 'string'],
+            'type_id'=> ['nullable', 'exists:types,id'],
             'link'=> ['required', 'url']
         ];
     }
@@ -45,6 +46,8 @@ class UpdateProjectRequest extends FormRequest
 
             'link.required'=> 'Il link è obbligatorio',
             'link.string'=> 'Il link deve essere un URL',
+
+            'type_id.exists' => 'La tipologia inserita non è valida',
         ];
     }
 }
